@@ -1,7 +1,5 @@
 import express from "express";
-import { config } from "dotenv";
-config({ path: "./config.env" }); // Load early
-
+import dotenv from "dotenv";
 import { dbConnection } from "./database/dbConnection.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -12,6 +10,8 @@ import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 
 const app = express();
+dotenv.config(); // 🔴 This must be before using process.env.*
+
 
 const allowedOrigins = [
   "https://clinic-snowy-ten.vercel.app",
