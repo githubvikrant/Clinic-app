@@ -14,7 +14,7 @@ dotenv.config(); // 🔴 This must be before using process.env.*
 
 
 const allowedOrigins = [
-  "https://clinic-snowy-ten.vercel.app",
+  "https://clinic-app-bwdr.onrender.com",
   "https://clinic-ffzp.vercel.app"
 ];
 
