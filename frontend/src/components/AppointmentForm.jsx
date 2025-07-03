@@ -1,5 +1,4 @@
 import axios from "axios";
-import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -19,7 +18,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "https://clinic-hkjx.vercel.app/api/v1/appointment/post",
+         `${import.meta.env.VITE_API_URL}/api/v1/appointment/post`,
         {
           firstName,
           lastName,

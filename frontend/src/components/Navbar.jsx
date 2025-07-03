@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const { data } = await axios.get(
-        "https://clinic-hkjx.vercel.app/api/v1/user/patient/logout",
+         `${import.meta.env.VITE_API_URL}/api/v1/user/patient/logout`,
         { withCredentials: true }
       );
       toast.success(data.message);

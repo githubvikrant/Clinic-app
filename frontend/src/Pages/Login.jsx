@@ -1,9 +1,8 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Link, useNavigate, Navigate } from "react-router-dom";
-import { MdPadding } from "react-icons/md";
+import { useContext, useState } from "react";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);

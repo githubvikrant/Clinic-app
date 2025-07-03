@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const WhatsAppButton = () => {

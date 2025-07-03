@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const MessageForm = () => {
@@ -14,7 +14,7 @@ const MessageForm = () => {
     try {
       await axios
         .post(
-          "https://clinic-hkjx.vercel.app/api/v1/message/send",
+           `${import.meta.env.VITE_API_URL}/api/v1/message/send`,
           { firstName, lastName, email, phone, message },
           {
             withCredentials: true,
