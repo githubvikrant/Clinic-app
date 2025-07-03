@@ -21,6 +21,22 @@ const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
     useContext(Context);
 
+
+     useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/ping`
+        );
+        console.log("✅ Backend connected:", response.data.message);
+      } catch (error) {
+        console.error("❌ Failed to connect to backend:", error.message);
+      }
+    };
+
+    checkBackend();
+  }, []);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
