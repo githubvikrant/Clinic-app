@@ -14,8 +14,8 @@ dotenv.config(); // 🔴 This must be before using process.env.*
 
 
 const allowedOrigins = [
-  "https://clinic-app-bwdr.onrender.com",
-  "https://clinic-ffzp.vercel.app"
+  "https://clinic-app-1-kybt.onrender.com",
+  "https://clinic-dashboard.onrender.com",
 ];
 
 console.log("Allowed Origins:", allowedOrigins); // Debug
