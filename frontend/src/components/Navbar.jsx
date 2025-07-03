@@ -18,10 +18,12 @@ const Navbar = () => {
       );
       toast.success(data.message);
       setIsAuthenticated(false);
+      navigate("/login"); // <-- force redirect      
     } catch (error) {
       toast.error(error.response?.data?.message || "Logout failed");
     }
   };
+
 
   const handleToggleMenu = () => {
     setShowMenu((prev) => !prev);
