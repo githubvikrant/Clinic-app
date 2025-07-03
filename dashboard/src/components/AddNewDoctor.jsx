@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
@@ -57,7 +57,7 @@ const AddNewDoctor = () => {
       formData.append("doctorDepartment", doctorDepartment);
       formData.append("docAvatar", docAvatar);
       await axios
-        .post("https://clinic-hkjx.vercel.app/api/v1/user/doctor/addnew", formData, {
+        .post(`${import.meta.env.VITE_API_URL}/api/v1/user/doctor/AddNewAdmin`, formData, {
           withCredentials: true,
           headers: { "Content-Type": "multipart/form-data" },
         })

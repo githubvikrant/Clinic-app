@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -14,7 +14,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          "https://clinic-hkjx.vercel.app/api/v1/appointment/getall",
+          `${import.meta.env.VITE_API_URL}/api/v1/appointment/getall`,
           { withCredentials: true }
         );
 
@@ -43,7 +43,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `https://clinic-hkjx.vercel.app/api/v1/appointment/update/${appointmentId}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
@@ -84,7 +84,7 @@ const Dashboard = () => {
             </div>
             <p>
               Welcome to your dashboard. Here you can manage appointments and
-              monitor your clinic's operations.
+              monitor your clinic&#39;s operations.
             </p>
           </div>
         </div>

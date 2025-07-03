@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Context } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -22,7 +22,7 @@ const AddNewAdmin = () => {
     try {
       await axios
         .post(
-          "https://clinic-hkjx.vercel.app/api/v1/user/admin/addnew",
+         `${import.meta.env.VITE_API_URL}/api/v1/user/admin/addnew`,
           { firstName, lastName, email, phone, dob, gender, password },
           {
             withCredentials: true,
