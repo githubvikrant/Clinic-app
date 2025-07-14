@@ -22,7 +22,7 @@ const AddNewAdmin = () => {
     try {
       await axios
         .post(
-         `${import.meta.env.BACKEND_URL}/api/v1/user/admin/addnew`,
+         `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/admin/addnew`,
           { firstName, lastName, email, phone, dob, gender, password },
           {
             withCredentials: true,

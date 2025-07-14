@@ -23,7 +23,7 @@ const App = () => {
     const checkBackend = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.BACKEND_URL}/api/v1/ping`
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/ping`
         );
         console.log("✅ Backend connected:", response.data.message);
       } 
@@ -41,7 +41,7 @@ const App = () => {
       try {
         const response = await axios.get(
           //  "http://localhost:9000/api/v1/user/patient/me",
-          `${import.meta.env.BACKEND_URL}/api/v1/user/patient/me`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/patient/me`,
           {
             withCredentials: true,
           }

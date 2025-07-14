@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const { data } = await axios.get(
-         `${import.meta.env.BACKEND_URL}/api/v1/user/patient/logout`,
+         `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/patient/logout`,
         { withCredentials: true }
       );
       toast.success(data.message);

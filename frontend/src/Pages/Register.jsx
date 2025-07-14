@@ -18,34 +18,40 @@ const Register = () => {
   const navigateTo = useNavigate();
 
   const handleRegistration = async (e) => {
-    e.preventDefault();
-    try {
-      await axios
-        .post(
-           `${import.meta.env.BACKEND_URL}/api/v1/user/patient/register`,
-          { firstName, lastName, email, phone,  dob, gender, password },
-          {
-            withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
-        )
-        .then((res) => {
-          toast.success(res.data.message);
-          setIsAuthenticated(true);
-          navigateTo("/");
-          setFirstName("");
-          setLastName("");
-          setEmail("");
-          setPhone("");
-          setDob("");
-          setGender("");
-          setPassword("");
-        });
-        toast.success("Register successful");
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
-  };
+  e.preventDefault();
+
+  if (!firstName || !lastName || !email || !phone || !dob || !gender || !password) {
+    return toast.error("Please fill in all required fields.");
+  }
+
+  try {
+    const res = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/patient/register`,
+      { firstName, lastName, email, phone, dob, gender, password },
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    toast.success(res.data.message);
+    setIsAuthenticated(true);
+    setUser(res.data.user); // Add this if your backend returns the user
+    navigateTo("/");
+
+    // Reset form
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setDob("");
+    setGender("");
+    setPassword("");
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Registration failed.");
+  }
+};
+
 
   if (isAuthenticated) {
     return <Navigate to={"/"} />;

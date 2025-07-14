@@ -18,7 +18,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-         `${import.meta.env.BACKEND_URL}/api/v1/appointment/post`,
+         `${import.meta.env.VITE_BACKEND_URL}/api/v1/appointment/post`,
         {
           firstName,
           lastName,
