@@ -50,14 +50,16 @@ const App = () => {
         setIsAuthenticated(true);
         setUser(response.data.user);
       } catch (error) {
-        if (error.response && error.response.status !== 401) {
-        toast.error("Failed to fetch user session");
-      }
+       // Handle 401 gracefully (not a real error if user is just not logged in)
+      if (error.response && error.response.status === 401) {
         setIsAuthenticated(false);
         setUser({});
+      } else {
+        toast.error("Something went wrong while fetching user session");
       }
-    };
-    fetchUser();
+    }
+  };
+  fetchUser();
   }, [setIsAuthenticated,setUser]);
 
 
