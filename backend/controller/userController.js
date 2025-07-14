@@ -204,19 +204,20 @@ export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Logout function for dashboard admin
 export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
   res
-    .status(201)
-    .cookie("adminToken", "", {
+    .status(200)
+    .clearCookie("adminToken", {
       httpOnly: true,
-      expires: new Date(Date.now()),
+      secure: true, // ❗ use this only if token was set with secure
+      sameSite: "None", // ❗ must match what you used during login
     })
     .json({
       success: true,
       message: "Admin Logged Out Successfully.",
     });
 });
+
 
 
 // Logout function for frontend patient
