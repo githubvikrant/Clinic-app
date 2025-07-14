@@ -47,6 +47,9 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+app.get("/api/v1/ping", (req, res) => {
+  res.status(200).json({ message: "Pong" });
+});
 
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
