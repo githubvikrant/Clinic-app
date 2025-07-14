@@ -9,5 +9,12 @@ cloudinary.v2.config({
 
 const PORT = process.env.PORT || 8000;
 
-console.log(`Server listening at ${process.env.NODE_ENV === 'production' ? 'on production server' : `http://localhost:${PORT}`}`);
-
+app.listen(PORT, () => {
+  console.log(
+    `✅ Server is running at ${
+      process.env.NODE_ENV === "production"
+        ? "on production server"
+        : `http://localhost:${PORT}`
+    }`
+  );
+});
