@@ -54,6 +54,7 @@ app.get("/api/v1/ping", (req, res) => {
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
+app.use("/api/v1/user", userRouter);
 
 dbConnection();
 
