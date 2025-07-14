@@ -218,21 +218,24 @@ export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
+
 // Logout function for frontend patient
 export const logoutPatient = catchAsyncErrors(async (req, res, next) => {
   res
-    .status(201)
-    .cookie("patientToken", "", {
+    .status(200)
+    .cookie("token", "", {
       httpOnly: true,
-      expires: new Date(Date.now()),
+      secure: true,
       sameSite: "None",
-    secure: true,
+      path: "/",
+      expires: new Date(Date.now()),
     })
     .json({
       success: true,
       message: "Patient Logged Out Successfully.",
     });
 });
+
 
 
 
