@@ -14,11 +14,9 @@ dotenv.config(); // 🔴 This must be before using process.env.*
 
 
 const allowedOrigins = [
-  "https://clinic-app-1-kybt.onrender.com",
-  "https://clinic-dashboard.onrender.com",
+   process.env.FRONTEND_URL,
+   process.env.DASHBOARD_URL,
 ];
-
-console.log("Allowed Origins:", allowedOrigins); // Debug
 
 app.use(
   cors({
@@ -35,7 +33,7 @@ app.use(
   })
 );
 
-app.use("/",(req,res)=>res.send("okkk"))
+app.use("/",(req,res)=>res.send("ok"))
 app.options("*", cors());
 
 app.use(cookieParser());

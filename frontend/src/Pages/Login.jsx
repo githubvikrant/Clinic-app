@@ -15,26 +15,26 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios
+      const res = await axios
         .post(
-          `${import.meta.env.VITE_API_URL}/api/v1/user/login`,
+          `${import.meta.env.BACKEND_URL}/api/v1/user/login`,
           { email, password, role: "Patient" },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
           }
-        )
-        .then((res) => {
-          toast.success(res?.data?.message);
-          setIsAuthenticated(true);
-          navigateTo("/");
-          setEmail("");
-          setPassword("");
-        });
-      toast.success();
+        );
+        
+        toast.success(res?.data?.message);
+        setIsAuthenticated(true);
+        setUser(res.data.user);
+        navigateTo("/");
+        setEmail("");
+        setPassword("");
     } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Login failed. Please try again.");
+
     }
   };
 

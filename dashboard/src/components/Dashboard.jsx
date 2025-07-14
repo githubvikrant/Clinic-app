@@ -14,7 +14,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/appointment/getall`,
+          `${import.meta.env.BACKEND_URL}/api/v1/appointment/getall`,
           { withCredentials: true }
         );
 
@@ -43,7 +43,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/v1/appointment/update/${appointmentId}`,
+        `${import.meta.env.BACKEND_URL}/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );

@@ -26,7 +26,7 @@ const App = () => {
     const checkBackend = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/ping`
+          `${import.meta.env.BACKEND_URL}/api/v1/ping`
         );
         console.log("✅ Backend connected:", response.data.message);
       } catch (error) {
@@ -42,7 +42,7 @@ const App = () => {
       try {
         const response = await axios.get(
           
-          `${import.meta.env.VITE_API_URL}/api/v1/user/admin/me`,
+          `${import.meta.env.BACKEND_URL}/api/v1/user/admin/me`,
           {
             withCredentials: true,
           }

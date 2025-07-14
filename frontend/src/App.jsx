@@ -23,12 +23,14 @@ const App = () => {
     const checkBackend = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/ping`
+          `${import.meta.env.BACKEND_URL}/api/v1/ping`
         );
         console.log("✅ Backend connected:", response.data.message);
-      } catch (error) {
-        console.error("❌ Failed to connect to backend:", error.message);
-      }
+      } 
+      catch (error) {
+        toast.error("Backend not connected");
+}
+
     };
 
     checkBackend();
@@ -39,7 +41,7 @@ const App = () => {
       try {
         const response = await axios.get(
           //  "http://localhost:9000/api/v1/user/patient/me",
-          `${import.meta.env.VITE_API_URL}/api/v1/user/patient/me`,
+          `${import.meta.env.BACKEND_URL}/api/v1/user/patient/me`,
           {
             withCredentials: true,
           }
@@ -47,15 +49,17 @@ const App = () => {
         setIsAuthenticated(true);
         setUser(response.data.user);
       } catch (error) {
+        toast.error("Failed to fetch user session");
         setIsAuthenticated(false);
         setUser({});
       }
     };
     fetchUser();
-  }, []);
+  }, [setIsAuthenticated,setUser]);
 
   return (
-    <>
+    <> 
+      <ToastContainer position="top-center" />
       <Router>
         <ScrollToTop />
         <Navbar />
@@ -68,7 +72,7 @@ const App = () => {
         </Routes>
         <WhatsAppButton />
         <Footer />
-        <ToastContainer position="top-center" />
+        
       </Router>
     </>
   );
