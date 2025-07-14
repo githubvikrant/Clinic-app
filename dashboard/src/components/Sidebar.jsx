@@ -24,6 +24,7 @@ const Sidebar = () => {
       .then((res) => {
         toast.success(res.data.message);
         setIsAuthenticated(false);
+        navigateTo("/login"); // ✅ go to login page
       })
       .catch((err) => {
         toast.error(err.response.data.message);
