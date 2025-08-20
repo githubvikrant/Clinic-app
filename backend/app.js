@@ -16,7 +16,7 @@ const app = express();
 
 // ✅ CORS setup for local frontend (Vite runs on port 5173 by default)
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["https://clinic-app-frontend-7avw.onrender.com", "https://clinic-app-dashboard.onrender.com"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
